@@ -1,0 +1,220 @@
+\def\mytitle{ASSIGNMENT}
+\def\myauthor{GUNA VARDHAN}
+\def\contact{gunavardhan.nagamalla@gmail.com}
+\def\mymodule{Future Wireless Communications (FWC)}
+\documentclass[journal,12pt,two column]{IEEEtran}
+
+\usepackage{setspace}
+\usepackage{gensymb}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage[hyphens,spaces,obeyspaces]{url}
+\usepackage[cmex10]{amsmath}
+\usepackage{mathtools}
+\singlespacing
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{txfonts}
+\usepackage{stfloats}
+\usepackage{cite}
+\usepackage{cases}
+\usepackage{subfig}
+\usepackage{longtable}
+\usepackage{multirow}
+\twocolumn
+
+
+\usepackage{graphicx}
+\graphicspath{{./images/}}
+\usepackage[colorlinks,linkcolor={black},citecolor={blue!80!black},urlcolor={blue!80!black}]{hyperref}
+\usepackage[parfill]{parskip}
+\usepackage{lmodern}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{karnaugh-map}
+\usepackage{pgf}
+\usepackage[hyphenbreaks]{breakurl}
+
+\usepackage{tabularx}
+\usetikzlibrary{calc}
+
+\renewcommand*\familydefault{\sfdefault}
+\usepackage{watermark}
+\usepackage{lipsum}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{titlesec}
+\DeclareMathOperator*{\Res}{Res}
+%\renewcommand{\baselinestretch}{2}
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+
+\renewcommand\thesectiondis{\arabic{section}}
+\renewcommand\thesubsectiondis{\thesectiondis.\arabic{subsection}}
+\renewcommand\thesubsubsectiondis{\thesubsectiondis.\arabic{subsubsection}}
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+\titlespacing{\subsection}{1pt}{\parskip}{3pt}
+\titlespacing{\subsubsection}{0pt}{\parskip}{-\parskip}
+\titlespacing{\paragraph}{0pt}{\parskip}{\parskip}
+\newcommand{\figuremacro}[5]{
+    \begin{figure}[#1]
+        \centering
+        \includegraphics[width=#5\columnwidth]{#2}
+        \caption[#3]{\textbf{#3}#4}
+        \label{fig:#2}
+    \end{figure}
+}
+
+\lstset{
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+
+%\thiswatermark{\centering \put(400,-128.0){\includegraphics[scale=0.3]{logo}} }
+\title{\mytitle}
+\author{\myauthor\hspace{1em}\\\contact\\IITH\hspace{0.5em}-\hspace{0.6em}\mymodule}
+\date{20-12-2022}
+\def\inputGnumericTable{}                                 %%
+\lstset{
+%language=C,
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+ 
+
+\begin{document}
+%
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{problem}{Problem}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}{Definition}[section]
+%\newtheorem{algorithm}{Algorithm}[section]
+%\newtheorem{cor}{Corollary}
+\newcommand{\BEQA}{\begin{eqnarray}}
+\newcommand{\EEQA}{\end{eqnarray}}
+\newcommand{\define}{\stackrel{\triangle}{=}}
+\bibliographystyle{IEEEtran}
+
+\vspace{3cm}
+  \maketitle
+  \tableofcontents
+ 
+\section{Question}  
+     Q.39. The state diagram of a sequence detector is shown below. State S0 is the initial state of the sequence detector. If the output is 1, then 
+     \begin{enumerate}
+         \item The sequence 01010 is detected
+         \item The sequence 01011 is detected
+         \item The sequence 01110 is detected
+         \item The sequence 01001is detected
+     \end{enumerate}
+
+\begin{tikzpicture} [node distance=2cm]
+\centering 
+\node[circle, draw, state, initial] (S0) {$S_0$};
+\node[circle, draw, state, accepting, right of=S0] (S1) {$S_1$};
+\node[circle, draw, state, accepting, right of=S1] (S2) {$S_2$};
+\node[circle, draw, state, accepting, right of=S2] (S3) {$S_3$}; 
+\node[circle, draw, state, below right of = S1] (S4) {$S_4$};
+\path[->] (S0) edge[above] node{0/0} (S1) 
+          (S0) edge[loop above] node{1/0} (S0)
+          (S1) edge[above] node{1/0} (S2)
+          (S1) edge[loop above] node{0/0} (S1)
+          (S2) edge[above] node{0/0} (S3) 
+          (S2) edge[below,bend left] node{1/0} (S0)
+          (S3) edge[below] node{1/0} (S4) 
+          (S3) edge[above,bend right] node{0/0} (S1) 
+          (S4) edge[below,bend left] node{1/0} (S0)   
+          (S4) edge[below,bend right] node{0/1} (S3); 
+\end{tikzpicture}
+  \section{Components}
+  \begin{tabularx}{0.4\textwidth} { 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X | }
+\hline
+ \textbf{Component}& \textbf{Values} & \textbf{Quantity}\\
+\hline
+Arduino & UNO & 1 \\  
+\hline
+JumperWires& M-M & 10 \\ 
+\hline
+Breadboard &  & 1 \\
+\hline
+LED & &2 \\
+\hline
+Resistor &220ohms & 1\\
+\hline
+\end{tabularx}
+\begin{center}
+Figure.a
+\end{center}
+\section{State Transition Table}
+ \begin{table}[ht]
+    \centering
+    \caption{State Transition Table}
+    \label{tab:state-transition}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \textbf{Current State} & \textbf{Input (x)} & \textbf{Next State} & \textbf{Output (z)} \\ \hline
+        S0 & 0 & S0 & 0 \\ \hline
+        S0 & 1 & S1 & 0 \\ \hline
+        S1 & 0 & S0 & 0 \\ \hline
+        S1 & 1 & S2 & 0 \\ \hline
+        S2 & 0 & S0 & 0 \\ \hline
+        S2 & 1 & S3 & 1 \\ \hline
+        S3 & 0 & S0 & 0 \\ \hline
+        S3 & 1 & S3 & 1 \\ \hline
+    \end{tabular}
+\end{table}
+\begin{center}
+ Truth table Boolean Function "F"
+\end{center}
+    
+\section{Implementation}
+  \begin{tabularx}{0.46\textwidth} { 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X  | }
+\hline
+\textbf{Arduino PIN} & \textbf{INPUT} & \textbf{OUTPUT} \\ 
+\hline
+\textbf 2 & X & \\
+\hline
+\textbf 3 & Y & \\
+\hline
+\textbf 4 && Z \\
+\hline
+\end{tabularx}
+\begin{center}
+    Connections
+\end{center}
+    \paragraph{Procedure}
+    
+    1. Connect the circuit as per the above table.\\
+    2. Connect the output pin to LED\\
+    3. Connect inputs to Vcc for logic 1, ground for logic 0\\
+    4. Execute the circuit using the below code.\\
+   
+\begin{tabularx}{0.6\textwidth} { 
+  | >{\centering\arraybackslash}X |}
+  \hline
+  https://github.com/GUNA5801/FWC/blob/main/AVR-GCC/CODE/main.c\\
+  \hline
+\end{tabularx}
+   
+5. Change the values of X,Y,Z in the code and verify the Truth Table\\
+\bibliographystyle{ieeetr}
+\end{document}
